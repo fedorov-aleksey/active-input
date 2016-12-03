@@ -1,6 +1,6 @@
 {
-    "name": "fav/yii2-packages",
-    "keywords": ["yii2", "extension", "widget", "form"],
+    "name": "MEDBEDbSkvozniak/yii2-packages",
+    "keywords": ["yii2", "extension"],
     "homepage": "https://github.com/MEDBEDbSkvozniak/fav-yii2-packages",
     "type": "yii2-extension",
     "license": "BSD 3-Clause",
@@ -12,11 +12,11 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "kartik-v/yii2-widget-typeahead": "*"
+        "MEDBEDbSkvozniak/yii2-package-theme-absolute-admin": "*"
     },
     "autoload": {
         "psr-4": {
-            "fav\\packages\\": ""
+            "MEDBEDbSkvozniak\\packages\\": ""
         }
     }
 }
