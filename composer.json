@@ -1,5 +1,6 @@
 {
     "name": "MEDBEDbSkvozniak/yii2-packages",
+    "description": "A short description of what your package does",
     "autoload": {
         "psr-0" : {
             "fav\\packages\\" : ""
