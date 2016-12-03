@@ -1,9 +1,9 @@
 {
-    "name": "fedorov-aleksey/yii2-packages",
-    "description": "A short description of what your package does",
+    "name": "fedorov-aleksey/active-input",
+    "description": "It allows you to create ActiveField without Active From",
     "autoload": {
         "psr-0" : {
-            "fav\\packages\\" : ""
+            "fav\\packages\\activeField" : ""
         }
     }
 }
