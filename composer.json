@@ -1,0 +1,22 @@
+{
+    "name": "fav/yii2-packages",
+    "keywords": ["yii2", "extension", "widget", "form"],
+    "homepage": "https://github.com/MEDBEDbSkvozniak/fav-yii2-packages",
+    "type": "yii2-extension",
+    "license": "BSD 3-Clause",
+    "authors": [
+        {
+            "name": "Fedorov A.V.",
+            "email": "MEDBEDbSkvozniak@gmail.com",
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "kartik-v/yii2-widget-typeahead": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "fav\\packages\\": ""
+        }
+    }
+}
