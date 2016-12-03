@@ -1,9 +1,8 @@
 {
     "name": "MEDBEDbSkvozniak/yii2-packages",
     "keywords": ["yii2", "extension"],
-    "homepage": "https://github.com/MEDBEDbSkvozniak/fav-yii2-packages",
+    "homepage": "https://github.com/MEDBEDbSkvozniak/yii2-package-theme-absolute-admin",
     "type": "yii2-extension",
-    "license": "BSD 3-Clause",
     "authors": [
         {
             "name": "Fedorov A.V.",
