@@ -57,7 +57,7 @@ abstract class ActiveField extends \yii\bootstrap\Widget
 
 	public function registerAssets() {
 		$view = $this->getView();
-		activeField::register($view);
+		activeFieldAsset::register($view);
 	}
 	
 	private function getJs() {
