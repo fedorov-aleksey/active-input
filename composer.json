@@ -1,7 +1,7 @@
 {
     "name": "MEDBEDbSkvozniak/yii2-packages",
     "keywords": ["yii2", "extension"],
-    "version": "1.0.0",
+    "version": "dev-master, 0.0.1",
     "homepage": "https://github.com/MEDBEDbSkvozniak/MEDBEDbSkvozniak/yii2-packages",
     "type": "yii2-extension",
     "authors": [
