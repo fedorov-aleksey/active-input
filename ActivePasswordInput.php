@@ -2,12 +2,12 @@
 namespace fav\activeField;
 
 use Yii;
-use yii\base\Html;
+use yii\bootstrap\Html;
 
-class ActiveTextInput extends ActiveField
+class ActivePasswordInput extends ActiveField
 {
     protected function getInput()
     {
-        return Html::activeTextInput($this->model, $this->attribute, $this->inputOptions);
+        return Html::activePasswordInput($this->model, $this->attribute, $this->inputOptions);
     }
 }
