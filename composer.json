@@ -1,5 +1,6 @@
 {
     "name": "fedorov-aleksey/active-input",
+    "version": "1.0.0",
     "description": "It allows you to create ActiveField without Active From",
     "autoload": {
         "psr-0" : {
