@@ -4,10 +4,10 @@ namespace fav\activeField;
 use Yii;
 use yii\base\Html;
 
-class ActivePasswordInput extends ActiveField
+class ActiveTextInput extends ActiveField
 {
     protected function getInput()
     {
-        return Html::activePasswordInput($this->model, $this->attribute, $this->inputOptions);
+        return Html::activeTextInput($this->model, $this->attribute, $this->inputOptions);
     }
 }
