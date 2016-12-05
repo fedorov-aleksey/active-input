@@ -4,7 +4,7 @@
     "description": "It allows you to create ActiveField without Active From",
     "autoload": {
         "psr-4" : {
-            "fav\\packages\\activeField" : ""
+            "fav\\packages\\activeField\\" : ""
         }
     }
 }
