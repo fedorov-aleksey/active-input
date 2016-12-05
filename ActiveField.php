@@ -17,7 +17,7 @@ abstract class ActiveField extends Widget
      */
     public $model;
     public $attribute;
-    public $template = "{label}\n{wrapperBegin}\n{input}\n{hint}\n{error}\n{wrapperEnd}";
+    public $template = "{label}\n{beginWrapper}\n{input}\n{hint}\n{error}\n{endWrapper}";
     public $options;
     public $labelOptions = [];
     public $inputOptions = [];
@@ -52,12 +52,12 @@ abstract class ActiveField extends Widget
         return Html::error($this->model, $this->attribute, $this->errorOptions);
     }
 
-    protected function getWrapperBegin()
+    protected function getBeginWrapper()
     {
         return Html::beginTag($this->tag, $this->wrapOptions);
     }
 
-    protected function getWrapperend()
+    protected function getEndWrapper()
     {
         return Html::endTag($this->tag);
     }
@@ -80,8 +80,8 @@ abstract class ActiveField extends Widget
         return Html::tag(
             $this->tag,
             str_replace(
-                ['{label}', '{input}', '{hint}', '{error}', '{wrapperBegin}', '{wrapperEnd}'],
-                [$this->getLabel(), $this->getInput(), $this->getHint(), $this->getError(), $this->getWrapperBegin(), $this->getWrapperend()],
+                ['{label}', '{input}', '{hint}', '{error}', '{beginWrapper}', '{endWrapper}'],
+                [$this->getLabel(), $this->getInput(), $this->getHint(), $this->getError(), $this->getBeginWrapper(), $this->getEndWrapper()],
                 $this->template
             ),
             ['class' => strtolower('form-group field-' . $this->model->formName() . '-' . $this->attribute)]
