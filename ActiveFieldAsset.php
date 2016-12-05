@@ -1,6 +1,6 @@
 <?php
 
-namespace fav/packages/activeField;
+namespace fav\activeField;
 
 use yii\web\AssetBundle;
 

@@ -4,8 +4,10 @@ namespace fav\activeField;
 use Yii;
 use yii\bootstrap\Html;
 
-class ActiveTextInput extends ActiveField
+class ActiveDropDownList extends ActiveField
 {
+    public $items;
+
     protected function getInput()
     {
         if (isset($this->inputOptions['class'])) {
@@ -13,6 +15,6 @@ class ActiveTextInput extends ActiveField
         } else {
             $this->inputOptions['class'] = 'form-control';
         }
-        return Html::activeTextInput($this->model, $this->attribute, $this->inputOptions);
+        return Html::activeDropDownList($this->model, $this->attribute, $this->items,$this->inputOptions);
     }
 }

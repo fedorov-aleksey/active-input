@@ -1,11 +1,13 @@
-
 <?php
-namespace fav/packages/activeField;
-use Yii;
-use yii/base/Html;
+namespace fav\activeField;
 
-class ActivePasswordInput extends ActiveField{
-	protected function getInput(){
-		return Html::activePasswordInput($this->model,$this->attribute,$this->inputOptions);
-	}
+use Yii;
+use yii\bootstrap\Html;
+
+class ActivePasswordInput extends ActiveField
+{
+    protected function getInput()
+    {
+        return Html::activePasswordInput($this->model, $this->attribute, $this->inputOptions);
+    }
 }

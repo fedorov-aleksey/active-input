@@ -1,66 +1,101 @@
 <?php
 
-namespace fav/packages/activeField;
+namespace fav\activeField;
 
 use Yii;
-use yii/base/Html;
+use yii\base\Model;
+use yii\bootstrap\Html;
+use yii\bootstrap\Widget;
 
 
-abstract class ActiveField extends \yii\bootstrap\Widget 
-	public $tag = 'div';
-	public $model;
-	public $attribute;
-	public $template = "{label}\n{wrapperBegin}\n{input}\n{hint}\n{error}\n{wrapperEnd}";
-	public $labelOptions = [];
-	public $inputOptions = [];
-	public $errorOptions = [];
-	public $hintOptions = [];
-	public $wrapOptions = [];
-	
-	protected function getLabel(){
-		return Html::activeLabel($this->model, $this->attribute, $this->labelOptions);
-	}
+abstract class ActiveField extends Widget
+{
 
-	abstract protected function getInput(){
-		return null;
-	}
-	protected function getHint(){
-		return Html::activeHint($this->model, $this->attribute, $this->hintOptions);
-	}
+    public $tag = 'div';
+    /**
+     * @var Model
+     */
+    public $model;
+    public $attribute;
+    public $template = "{label}\n{beginWrapper}\n{input}\n{hint}\n{error}\n{endWrapper}";
+    public $options;
+    public $labelOptions = [];
+    public $inputOptions = [];
+    public $errorOptions = [];
+    public $hintOptions = [];
+    public $wrapOptions = [];
 
-	protected function getError(){
-		return Html::error($this->model, $this->attribute, $this->errorOptions);
-	}
+    protected function getLabel()
+    {
+        if (isset($this->labelOptions['class'])) {
+            $this->labelOptions['class'] .= ' control-label';
+        } else {
+            $this->labelOptions['class'] = 'control-label';
+        }
+        return Html::activeLabel($this->model, $this->attribute, $this->labelOptions);
+    }
 
-	protected function getWrapperBegin(){
-		return Html::beginTag($this->tag, $this->wrapOptions);
-	}
+    abstract protected function getInput();
 
-	protected function getWrapperend(){
-		return Html::endTag($this->tag);
-	}
+    protected function getHint()
+    {
+        return Html::activeHint($this->model, $this->attribute, $this->hintOptions);
+    }
 
-	public function init() {
-		parent::init();
-		$view = Yii::$app->getView();
-		$this->registerAssets();
-		$view->registerJs($this->getJs());
-	}
+    protected function getError()
+    {
+        if (isset($this->errorOptions['class'])) {
+            $this->errorOptions['class'] .= ' help-block help-block-error';
+        } else {
+            $this->errorOptions['class'] = 'help-block help-block-error';
+        }
+        return Html::error($this->model, $this->attribute, $this->errorOptions);
+    }
 
-	public function run() {
-		return str_replace(
-			['{label}','{input}','{hint}','{error}','{wrapperBegin}','{wrapperEnd}'],
-			[$this->getLabel(),$this->getInput(),$this->getHint(),$this->getError(),$this->getWrapperBegin(),$this->getWrapperend()],
-			$this->template
-		);
-	}
+    protected function getBeginWrapper()
+    {
+        return Html::beginTag($this->tag, $this->wrapOptions);
+    }
 
-	public function registerAssets() {
-		$view = $this->getView();
-		activeFieldAsset::register($view);
-	}
-	
-	private function getJs() {
-		return null;
-	}
+    protected function getEndWrapper()
+    {
+        return Html::endTag($this->tag);
+    }
+
+    public function init()
+    {
+        parent::init();
+        $view = Yii::$app->getView();
+        $this->registerAssets();
+        $view->registerJs($this->getJs());
+    }
+
+    public function run()
+    {
+        foreach (['labelOptions', 'inputOptions', 'hintOptions', 'errorOptions', 'wrapOptions'] as $item) {
+            if (empty($this->{$item}) && isset($this->options[$item])) {
+                $this->{$item} = $this->options[$item];
+            }
+        }
+        return Html::tag(
+            $this->tag,
+            str_replace(
+                ['{label}', '{input}', '{hint}', '{error}', '{beginWrapper}', '{endWrapper}'],
+                [$this->getLabel(), $this->getInput(), $this->getHint(), $this->getError(), $this->getBeginWrapper(), $this->getEndWrapper()],
+                $this->template
+            ),
+            ['class' => strtolower('form-group field-' . $this->model->formName() . '-' . $this->attribute)]
+        );
+    }
+
+    public function registerAssets()
+    {
+        $view = $this->getView();
+        ActiveFieldAsset::register($view);
+    }
+
+    private function getJs()
+    {
+        return null;
+    }
 }
