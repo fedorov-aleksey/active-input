@@ -2,6 +2,12 @@
     "name": "fedorov-aleksey/active-input",
     "version": "1.0.0",
     "description": "It allows you to create ActiveField without Active From",
+    "authors": [
+        {
+            "name": "Fedorov Aleksey",
+            "email": "fav@equifax.ru"
+        }
+    ],    
     "autoload": {
         "psr-4" : {
             "fav\\packages\\activeField\\" : ""
