@@ -15,7 +15,7 @@ class ActiveSwitch extends ActiveField
 {
     public $switchOptions = ['class' => 'switch switch-info switch-inline'];
     public $bsComponentOptions = ['class' => 'bs-component'];
-    public $template = "{label}\n{beginWrapper}\n{beginBsComponent}\n{beginSwitch}\n{input}\n{label}\n{hint}\n{error}\n{endSwitch}\n{endBsComponent}\n{endWrapper}";
+    public $template = "{label}\n{beginWrapper}\n{beginBsComponent}\n{beginSwitch}\n{input}\n{labelSwitch}\n{hint}\n{error}\n{endSwitch}\n{endBsComponent}\n{endWrapper}";
 
     public function getBeginBsComponent()
     {
@@ -46,11 +46,16 @@ class ActiveSwitch extends ActiveField
         }
 
         $this->template = str_replace(
-            ['{beginBsComponent}', '{beginSwitch}', '{endSwitch}', '{endBsComponent}'],
-            [$this->getBeginBsComponent(), $this->getBeginSwitch(), $this->getEndBsComponent(), $this->getEndSwitch()],
+            ['{beginBsComponent}', '{beginSwitch}', '{endSwitch}', '{endBsComponent}', '{labelSwitch}'],
+            [$this->getBeginBsComponent(), $this->getBeginSwitch(), $this->getEndBsComponent(), $this->getEndSwitch(), $this->getLabelSwitch()],
             $this->template
         );
         return parent::run();
+    }
+
+    public function getLabelSwitch()
+    {
+        return Html::activeLabel($this->model, $this->attribute, ['class' => 'control-label col-xs-1', 'label' => '']);
     }
 
     public function getInput()
